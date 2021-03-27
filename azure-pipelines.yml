@@ -6,8 +6,17 @@
 trigger:
 - master
 
+strategy:
+  matrix:
+    linux: 
+      imagename: "ubuntu-latest"
+    mac:
+      imagename: "macos-10.14"
+    windows:
+      imagename: "vs2017-win2016"
+  maxParallel: 3
 pool:
-  vmImage: ubuntu-latest
+  vmImage: $(imagename)
 
 variables:
   GOBIN:  '$(GOPATH)/bin' # Go binaries path
